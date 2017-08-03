@@ -1,4 +1,5 @@
 ((state, timeLeftFn) => {
+    console.log(state);
 
     const savedState = state['saved-state'];
     const lastMove = savedState['last-move'];

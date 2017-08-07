@@ -1,36 +1,10 @@
 ((state, timeLeftFn) => {
-    console.log(state);
-
-    const savedState = state['saved-state'];
-    const lastMove = savedState['last-move'];
-
-    const turnCommand = {
-      action: 'turn',
-      metadata: {
-        direction: 'right',
-      },
-    };
-
-    const shootCommand = {
-      action: 'shoot',
-      metadata: {},
-    };
-
-    const nextCommand = (
-      lastMove == 'turnCommand'
-        ? 'shootCommand'
-        : 'turnCommand'
-    );
-
-    const commands = {
-      'turnCommand': turnCommand,
-      'shootCommand': shootCommand,
-    };
-
-    return {
-        command: commands[nextCommand],
-        state: {
-          'last-move': nextCommand
-        }
-    };
+    const http = require('http');
+    let command;
+    http.get('http://wombackend.herokuapp.com/', res => {
+        res.on('data', data => { 
+            command = JSON.parse(data);
+            return { command, state: {} }
+        })
+    });
 });

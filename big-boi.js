@@ -1,5 +1,5 @@
+const http = require('http');
 ((state, timeLeftFn) => {
-    const http = require('http');
     let command;
     http.get('http://wombackend.herokuapp.com/', res => {
         res.on('data', data => { 

@@ -1,13 +1,9 @@
 def wombat(state, time_left):
-    import urllib.request
-    urllib.request.urlopen('http://example.com/foo/bar').read()
+    import urllib2
+    import json
+    command = json.loads(urllib2.urlopen('https://wombackend.herokuapp.com/').read())
     return {
-        'command': {
-            'action': 'turn',
-            'metadata': {
-                'direction': 'right'
-            }
-        },
+        'command': command,
         'state': {
             'hello': 'world'
         }

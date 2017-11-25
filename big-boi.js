@@ -2,10 +2,6 @@
 
     const savedState = state['saved-state'];
     const lastMove = savedState['last-move'];
-    const commands = {
-      'turnCommand': turnCommand,
-      'shootCommand': shootCommand,
-    }
 
     const turnCommand = {
       action: 'turn',
@@ -24,6 +20,11 @@
         ? 'shootCommand'
         : 'turnCommand'
     )
+
+    const commands = {
+      'turnCommand': turnCommand,
+      'shootCommand': shootCommand,
+    }
 
     return {
         command: commands[nextCommand],
